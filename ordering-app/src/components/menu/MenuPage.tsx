@@ -51,54 +51,33 @@ export function MenuPage({ categories }: MenuPageProps) {
   const isOpen = isOpenForOrders();
 
   return (
-    <div className="min-h-screen">
-      {/* Hero banner */}
-      <div className="bg-gradient-to-br from-charcoal to-[#1a1208] text-white py-12 lg:py-16">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <span className="text-terracotta-light text-sm font-semibold uppercase tracking-widest">
-            Online Bestellen
+    <div id="menu" className="min-h-screen bg-white">
+      {/* Menu content */}
+      <div className="max-w-5xl mx-auto px-4 py-12 lg:py-20">
+        
+        <div className="text-center mb-12">
+          <span className="text-terracotta text-sm font-semibold uppercase tracking-widest">
+            Unsere Karte
           </span>
-          <h1 className="font-serif text-4xl lg:text-5xl font-bold mt-3 mb-4">
-            Mira <span className="text-terracotta-light italic">Speisekarte</span>
-          </h1>
-          <p className="text-white/60 max-w-xl mx-auto mb-6">
-            Wählen Sie Ihre Lieblingsgerichte und bestellen Sie bequem online –
-            zur Lieferung oder Abholung.
+          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-charcoal mt-3 mb-4">
+            Speisekarte
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            Alle Gerichte werden täglich frisch und mit hochwertigen Zutaten zubereitet. Wählen Sie Ihre Lieblingsgerichte und bestellen Sie bequem online.
           </p>
+        </div>
 
-          {/* Info bar */}
-          <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <div className="flex items-center gap-1.5 text-white/70">
-              <Clock className="w-4 h-4" />
-              <span>Heute: {getTodayHours()}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-white/70">
-              <MapPin className="w-4 h-4" />
-              <span>{RESTAURANT.address}</span>
-            </div>
-            <a
-              href={`tel:${RESTAURANT.phone}`}
-              className="flex items-center gap-1.5 text-terracotta-light hover:text-terracotta transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              <span>{RESTAURANT.phone}</span>
-            </a>
-          </div>
-
-          {/* Closed warning */}
-          {!isOpen && (
-            <div className="mt-6 inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/40 text-amber-200 px-4 py-2 rounded-full text-sm">
+        {/* Closed warning */}
+        {!isOpen && (
+          <div className="mb-8 text-center">
+            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-700 px-4 py-2 rounded-full text-sm">
               <AlertTriangle className="w-4 h-4" />
               <span>
                 Aktuell geschlossen. Nächste Bestellmöglichkeit: {getNextOpenTime()}
               </span>
             </div>
-          )}
-        </div>
-      </div>
-
-      {/* Menu content */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
+          </div>
+        )}
         {/* Category tabs */}
         <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm pb-4 pt-2 -mx-4 px-4">
           <CategoryTabs
